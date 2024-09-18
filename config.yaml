@@ -10,6 +10,15 @@
     apt:
       name: python3-pip
 
+  - name: Install Java open-jdk
+    apt:
+      name: openjdk-8-jre-headless 
+
+  - name: MOTD Creation
+    copy: 
+       content: "Ansible Managed Node by Magnait"
+       dest: /etc/motd
+
   - name: User creation
     user:
       name: User1
@@ -18,6 +27,9 @@
       comment: "User creation task"
       createhome: yes
 
-  - name: Install Java open-jdk
-    apt:
-      name: openjdk-8-jre-headless 
+  - name: Python3-pip default 
+    shell: update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
+  - name: Python3 default  
+    shell: update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
