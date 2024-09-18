@@ -10,6 +10,14 @@
     apt:
       name: python3-pip
 
-  - name: default pip3
+  - name: User creation
+    user:
+      name: User1
+      state: present
+      shell: /bin/bash
+      comment: "User creation task"
+      createhome: yes
+
+  - name: Install Java open-jdk
     apt:
-       update-alternatives --install /usr/bin/python 3 python3 /usr/bin/python3.1
+      name: openjdk-8-jre-headless 
